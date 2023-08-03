@@ -10,10 +10,6 @@
 
 #include "math_private.h"
 
-OLM_DLLEXPORT float
-cabsf(z)
-	float complex z;
-{
-
+OLM_DLLEXPORT float cabsf(float complex z) {
 	return hypotf(crealf(z), cimagf(z));
 }

@@ -32,6 +32,8 @@
 #include "fpmath.h"
 #include "math_private.h"
 
+extern int __aeabi_fcmpgt(float,float);
+
 OLM_DLLEXPORT float
 fmaxf(float x, float y)
 {
@@ -50,5 +52,6 @@ fmaxf(float x, float y)
 	if (u[0].bits.sign != u[1].bits.sign)
 		return (u[u[0].bits.sign].f);
 
-	return (x > y ? x : y);
+    int cmp = __aeabi_fcmpgt(x,y);
+	return (cmp > 0 ? x : y);
 }
